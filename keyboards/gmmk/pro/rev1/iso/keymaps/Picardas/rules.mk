@@ -1,0 +1,5 @@
+ENCODER_MAP_ENABLE = yes
+DEBOUNCE_TYPE = asym_eager_defer_pk
+RGB_MATRIX_CUSTOM_USER = yes
+LTO_ENABLE = yes
+CONSOLE_ENABLE = yes
