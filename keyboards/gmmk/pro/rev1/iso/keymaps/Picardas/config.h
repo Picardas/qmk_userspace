@@ -86,7 +86,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set debounce time to 3ms */
 #if defined(DEBOUNCE)
     #undef DEBOUNCE
-    #define DEBOUNCE 2
+    #define DEBOUNCE 3
 #endif
 
 // Show matrix scan rate if debug console in enabled
