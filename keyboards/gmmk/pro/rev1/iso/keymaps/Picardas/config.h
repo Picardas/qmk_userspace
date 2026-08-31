@@ -89,12 +89,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #define DEBOUNCE 2
 #endif
 
-// Use Caps Word
-// Below requires customisation to wider qmk repo (changing DOUBLE_TAP_TURNS_ON_CAPS_WORD)
-// Look for way to implement this without that
-// #define DOUBLE_TAP_RSHIFT_TURNS_ON_CAPS_WORD
-// Set Caps Word to 2s
-//#define CAPS_WORD_IDLE_TIMEOUT 2000  // 2 seconds
-
 // Show matrix scan rate if debug console in enabled
 #define DEBUG_MATRIX_SCAN_RATE
