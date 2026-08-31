@@ -59,10 +59,10 @@ LED8(92)                                                                        
     [_FN] = LAYOUT(
           _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,           QK_BOOT,
           _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_DEL,            _______,
-          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                    RGB_HUI,
-          _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, _______, _______,   _______, _______,           RGB_SAI,
-          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, RGB_MOD,  RGB_VAI,
-          _______, _______, _______,                            _______,                            _______, _______, _______, RGB_SPD, RGB_RMOD, RGB_SPI
+          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,                    _______,
+          _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, _______, _______,   _______, _______,           _______,
+          _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______, _______,  _______,
+          _______, _______, _______,                            _______,                            _______, _______, _______, _______, _______,  _______
     ),
 
 };
@@ -81,10 +81,16 @@ bool rgb_matrix_indicators_user(void) {
     // Get the current Caps Lock state
     bool caps_lock_on = host_keyboard_led_state().caps_lock;
 
-    // Handle Caps Lock indicator (LED index 3)
+    // Handle Caps Lock indicator: Tab + Caps keys, plus the left/right side strips (LED1-LED16)
     if (caps_lock_on) {
-        rgb_matrix_set_color(2, RGB_YELLOW);
-        rgb_matrix_set_color(3, RGB_YELLOW);
+        static const uint8_t caps_lock_leds[] = {
+            2,  3,                                  // Tab, Caps Lock
+            68, 71, 74, 77, 81, 84, 88, 92,          // Left side strip (LED1-LED8)
+            69, 72, 75, 78, 82, 85, 89, 93           // Right side strip (LED9-LED16)
+        };
+        for (uint8_t i = 0; i < sizeof(caps_lock_leds); i++) {
+            rgb_matrix_set_color(caps_lock_leds[i], RGB_YELLOW);
+        }
     }
 
     // Return false to allow the active RGB Matrix effect to continue drawing on all *other* LEDs.
