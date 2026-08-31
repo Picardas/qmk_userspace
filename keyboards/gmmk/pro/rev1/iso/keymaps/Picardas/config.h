@@ -88,6 +88,3 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     #undef DEBOUNCE
     #define DEBOUNCE 3
 #endif
-
-// Show matrix scan rate if debug console in enabled
-#define DEBUG_MATRIX_SCAN_RATE
